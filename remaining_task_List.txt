@@ -1,0 +1,16 @@
+1. Update the repo as CLEAN or prekcat for the community
+
+2. Add a subfolder - figure to store data and code to generate figures in paper
+
+3. Add a tutorial to use and train DeepEnzyme
+
+4. A sub-model of DeepEnzyme by integrating node information from pre-training models（DeepFRI）
+
+5. Set up independent datasets to test all models
+
+6. Test DeepEnzyme using data from Siwei
+
+7. Make the DeepEnzyme fit for different platforms, Windows, linux and Mac - package
+
+8. Help Luchi to grasp and re-train DeepEnzyme for the following update
+
