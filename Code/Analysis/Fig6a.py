@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from glob import glob
 
-csv_files = glob('../DeepEnzyme/Data/Fig/BiGG/*')
+csv_files = glob('../../../DeepEnzyme/Data/Fig/BiGG/*')
 data = []
 for i in csv_files:
     if 'seq' not in i and 'SMILES' not in i and 'csv' in i:
@@ -17,4 +17,4 @@ plt.xlabel('Predicted $log$$_\mathregular{10}$($k$$_\mathregular{cat}$)')
 plt.ylabel('Frequency')
 
 plt.show()
-#plt.savefig("../../figure/Fig6a.pdf", dpi=600, bbox_inches='tight')
+#plt.savefig("../../../DeepEnzyme/Results/Figures/Fig6a.pdf", dpi=600, bbox_inches='tight')
