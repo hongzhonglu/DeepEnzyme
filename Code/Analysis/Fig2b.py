@@ -4,7 +4,7 @@ import numpy as np
 from scipy.stats import pearsonr, gaussian_kde
 from sklearn.metrics import mean_squared_error
 
-df = pd.read_csv('../DeepEnzyme/Data/Fig/Fig2.csv')
+df = pd.read_csv('../../../DeepEnzyme/Data/Fig/Fig2.csv')
 predicted_logkcat = []
 experiment_logkcat = []
 
@@ -52,4 +52,4 @@ ax.spines['top'].set_linewidth(0.5)
 ax.spines['right'].set_linewidth(0.5)
 
 plt.show()
-# plt.savefig("../../figure/Fig2b.pdf", dpi=600, bbox_inches='tight')
+# plt.savefig("../../../DeepEnzyme/Results/Figures/Fig2b.pdf", dpi=600, bbox_inches='tight')
