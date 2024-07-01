@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-df = pd.read_csv("../DeepEnzyme/Data/Fig/P00558_att.csv")
-with open('../DeepEnzyme/Data/Fig/P00558_att.txt', 'r') as input:
+df = pd.read_csv("../../../DeepEnzyme/Data/Fig/P00558_att.csv")
+with open('../../../DeepEnzyme/Data/Fig/P00558_att.txt', 'r') as input:
     att = input.readlines()
 
 x = df['site'].values.tolist()
@@ -35,4 +35,4 @@ plt.legend(loc='upper right', fontsize=12)
 plt.tight_layout()
 
 plt.show()
-#plt.savefig("../../figure/Fig5c.pdf", dpi=600, bbox_inches='tight')
+#plt.savefig("../../../DeepEnzyme/Results/Figures/Fig/Fig5d.pdf", dpi=600, bbox_inches='tight')
