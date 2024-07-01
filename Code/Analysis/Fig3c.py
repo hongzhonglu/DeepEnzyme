@@ -7,13 +7,13 @@ import matplotlib.pyplot as plt
 
 warnings.filterwarnings("ignore")
 
-df = pd.read_csv('X:/Downloads/DeepEnzyme/DeepEnzyme/Data/Fig/Fig2.csv')
-
-data_test = pd.read_pickle(join("X:/Downloads/data/kcat_data/splits/test_df_kcat.pkl"))
+df = pd.read_csv('../../../DeepEnzyme/Data/Fig/Fig2.csv')
+df_DLTKcat = pd.read_csv('../../../DeepEnzyme/Data/Fig/DLTKcat_out.csv')
+data_test = pd.read_pickle(join("../../../DeepEnzyme/Data/Fig/test_df_kcat.pkl"))
 pred_y = np.load(
-    join("X:/Downloads/data/training_results/y_test_pred_xgboost_ESM1b_ts_DRFP_mean.npy"))
+    join("../../../DeepEnzyme/Data/Fig/y_test_pred_xgboost_ESM1b_ts_DRFP_mean.npy"))
 test_y = np.load(
-    join("X:/Downloads/data/training_results/y_test_true_xgboost_ESM1b_ts_DRFP_mean.npy"))
+    join("../../../DeepEnzyme/Data/Fig/y_test_true_xgboost_ESM1b_ts_DRFP_mean.npy"))
 
 data_test["y_true"] = test_y
 data_test["y_pred"] = pred_y
@@ -21,7 +21,7 @@ data_test["max_ident"] = np.nan
 
 for ind in data_test.index:
     try:
-        with open(join("X:/Downloads/data/enzyme_data/kcat_ident/test_seq" + str(ind) + ".txt")) as f:
+        with open(join("../../../DeepEnzyme/Data/Fig/kcat_ident/test_seq" + str(ind) + ".txt")) as f:
             ident = f.readlines()
             ident = float(ident[0])
 
@@ -29,7 +29,7 @@ for ind in data_test.index:
     except FileNotFoundError:
         pass
 
-data_test_DLkcat = pd.read_pickle(join("X:/Downloads/data/DLkcat/df_pred.pkl"))
+data_test_DLkcat = pd.read_pickle(join("../../../DeepEnzyme/Data/Fig/df_pred.pkl"))
 
 splits = ["0-50%", "50-90%", '90-100%']
 lower_bounds = [0, 50, 90]
@@ -81,26 +81,49 @@ DeepEnzyme_0_50 = r2_score(DeepEnzyme_0_50_exp, DeepEnzyme_0_50_pre)
 DeepEnzyme_50_90 = r2_score(DeepEnzyme_50_90_exp, DeepEnzyme_50_90_pre)
 DeepEnzyme_90_100 = r2_score(DeepEnzyme_90_100_exp, DeepEnzyme_90_100_pre)
 
+ex_DLTKcat_0_5 = []
+ex_DLTKcat_5_9 = []
+ex_DLTKcat_9_10 = []
+pre_DLTKcat_0_5 = []
+pre_DLTKcat_5_9 = []
+pre_DLTKcat_9_10 = []
+for i in df_DLTKcat['EC'].index:
+    if df_DLTKcat['aln'][i] <= 0.5:
+        ex_DLTKcat_0_5.append(df_DLTKcat['log_kcat'][i])
+        pre_DLTKcat_0_5.append(df_DLTKcat['pred_log10kcat'][i])
+    if 0.5 <= df_DLTKcat['aln'][i] <= 0.9:
+        ex_DLTKcat_5_9.append(df_DLTKcat['log_kcat'][i])
+        pre_DLTKcat_5_9.append(df_DLTKcat['pred_log10kcat'][i])
+    if 0.9 <= df_DLTKcat['aln'][i] <= 1:
+        ex_DLTKcat_9_10.append(df_DLTKcat['log_kcat'][i])
+        pre_DLTKcat_9_10.append(df_DLTKcat['pred_log10kcat'][i])
+
+r_DLTKcat_0_5 = r2_score(ex_DLTKcat_0_5, pre_DLTKcat_0_5)
+r_DLTKcat_5_9 = r2_score(ex_DLTKcat_5_9, pre_DLTKcat_5_9)
+r_DLTKcat_9_10 = r2_score(ex_DLTKcat_9_10, pre_DLTKcat_9_10)
+
 x = ['0-50%', '50%-90%', '90%-100%']
 x = np.arange(len(x))
 width = 0.1
 
 y1 = [DeepEnzyme_0_50, DeepEnzyme_50_90, DeepEnzyme_90_100]
 y2 = y_TurNuP
-y3 = y_DLkcat
+y3 = [r_DLTKcat_0_5, r_DLTKcat_5_9, r_DLTKcat_9_10]
+y4 = y_DLkcat
 
 fig, ax = plt.subplots()
 
 rects1 = ax.bar(x - width, y1, width, color='#5875A7', label='DeepEnzyme')
 rects2 = ax.bar(x, y2, width, color='#CD885D', label='TurNuP')
-rects3 = ax.bar(x + width, y3, width, color='#5F9E98', label='DLKcat')
+rects3 = ax.bar(x + width, y3, width, color='#5F9E98', label='DLTKcat')
+rects4 = ax.bar(x + width*2, y4, width, color='#7894BC', label='DLKcat')
 
 ax.set_xticks(x)
 ax.set_xticklabels(['0-50%', '50%-90%', '90%-100%'])
 ax.set_xlabel('Enzyme sequence identity')
 ax.set_ylabel('${R^2}$')
 
-ax.legend()
+ax.legend(loc='lower right')
 
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
@@ -113,4 +136,4 @@ ax.yaxis.grid(color='gray', linestyle='dashed')
 plt.tight_layout()
 
 plt.show()
-#plt.savefig("../../figure/Fig3c.pdf", dpi=600, bbox_inches='tight')
+#plt.savefig("../../../DeepEnzyme/Results/Figures/Fig3c.pdf", dpi=600, bbox_inches='tight')
