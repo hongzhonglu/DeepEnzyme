@@ -3,7 +3,7 @@ from scipy.stats import pearsonr
 import matplotlib.pyplot as plt
 from sklearn.metrics import r2_score
 
-df = pd.read_csv('../DeepEnzyme/Data/Fig/Fig2.csv')
+df = pd.read_csv('../../../DeepEnzyme/Data/Fig/Fig2.csv')
 
 EC_1_pre, EC_1_exp = [], []
 EC_2_pre, EC_2_exp = [], []
@@ -59,4 +59,4 @@ plt.title('${R^2}$ of different EC number')
 plt.ylabel('${R^2}$')
 
 plt.show()
-# plt.savefig("../../figure/Fig2d.pdf", dpi=600, bbox_inches='tight')
+# plt.savefig("../../../DeepEnzyme/Results/Figures/Fig2d.pdf", dpi=600, bbox_inches='tight')
