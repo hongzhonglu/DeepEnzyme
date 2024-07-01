@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import stats
 
-df = pd.read_csv("../DeepEnzyme/Data/Fig/P00558_att.csv")
-with open('../DeepEnzyme/Data/Fig/P00558_att.txt', 'r') as input:
+df = pd.read_csv("../../../DeepEnzyme/Data/Fig/P00558_att.csv")
+with open('../../../DeepEnzyme/Data/Fig/P00558_att.txt', 'r') as input:
     att = input.readlines()
 
 x = df['site'].values.tolist()
@@ -31,4 +31,4 @@ plt.tick_params(axis='both', labelsize=12)
 plt.tight_layout()
 
 plt.show()
-#plt.savefig("../../figure/Fig5d.pdf", dpi=600, bbox_inches='tight')
+#plt.savefig("../../../DeepEnzyme/Results/Figures/Fig5e.pdf", dpi=600, bbox_inches='tight')
