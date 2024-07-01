@@ -1,13 +1,13 @@
 import torch
 from torch import nn
-from GCN import GCN
-from protein_transformer import TransformerBlock as protein_transformer
+from Code.Model.GCN import GCN
+from Code.Model.protein_transformer import TransformerBlock as protein_transformer
 import torch.nn.functional as F
 
 
-class DeepKcat(nn.Module):
+class DeepEnzyme(nn.Module):
     def __init__(self, n_fingerprint, dim, n_word, layer_output, hidden_dim1, hidden_dim2, dropout, nhead, hid_size, layers_trans):
-        super(DeepKcat, self).__init__()
+        super(DeepEnzyme, self).__init__()
         self.embed_fingerprint = nn.Embedding(n_fingerprint, dim)
         self.embed_wordGCN = nn.Embedding(n_word, dim)
         self.embed_wordTrans = nn.Embedding(n_word, hid_size)
