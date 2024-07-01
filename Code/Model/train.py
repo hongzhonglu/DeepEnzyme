@@ -168,6 +168,7 @@ def main():
     layers_trans = 3
 
     dir_input = '../../../DeepEnzyme/Data/Input/'
+    #proteinadjacencies_0612/smileadjacencies_0612/sequences_0612 can be downloaded from https://figshare.com/articles/dataset/DeepEnzyme/25771062
     fingerprint = load_tensor(dir_input + 'fingerprint_0612', torch.LongTensor)
     smileadjacencies = load_tensor(dir_input + 'smileadjacencies_0612', torch.FloatTensor)
     sequences = load_tensor(dir_input + 'sequences_0612', torch.LongTensor)
