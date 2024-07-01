@@ -3,7 +3,7 @@ import pandas as pd
 from rdkit import Chem
 from collections import defaultdict
 from sklearn.metrics import pairwise_distances
-from example_model import DeepKcat
+from example_model import DeepEnzyme
 import torch
 import pickle
 import numpy as np
@@ -160,10 +160,10 @@ def main():
     radius = 2
     ngram = 4
 
-    dir_input = '../../Data/'
+    dir_input = '../../../DeepEnzyme/Data/Input/'
     sequence = '"MPFGNTHNKFKLNYKPEEEYPDLSKHNNHMAKVLTLELYKKLRDKETPSGFTVDDVIQTGVDNPGHPFIMTVGCVAGDEESYEVFKELFDPIISDRHGGYKPTDKHKTDLNHENLKGGDDLDPNYVLSSRVRTGRSIKGYTLPPHCSRGERRAVEKLSVEALNSLTGEFKGKYYPLKSMTEKEQQQLIDDHFLFDKPVSPLLLASGMARDWPDARGIWHNDNKSFLVWVNEEDHLRVISMEKGGNMKEVFRRFCVGLQKIEEIFKKAGHPFMWNQHLGYVLTCPSNLGTGLRGGVHVKLAHLSTHPKFEEILTRLRLQKRGTGGVDTAAVGSVFDVSNADRLGSSEVEQVQLVVDGVKLMVEMEKKLEKGQSIDDMIPAQK'
     smiles = 'CN(CC(=O)O)C(=N)N'
-    structure = '../../Data/2.7.3.2_Homo_sapiens_Seq_5476_relaxed_rank_1_model_3.pdb'
+    structure = '../../../DeepEnzyme/Data/Input/2.7.3.2_Homo_sapiens_Seq_5476_relaxed_rank_1_model_3.pdb'
     atom_dict = load_pickle(dir_input + 'atom_dict_0612.pickle')
     bond_dict = load_pickle(dir_input + 'bond_dict_0612.pickle')
     edge_dict = load_pickle(dir_input + 'edge_dict_0612.pickle')
@@ -185,9 +185,9 @@ def main():
 
     inputs = [fingerprints, smilesadjacency, words, proteinadjacency]
 
-    model = DeepKcat(n_fingerprint, dim, n_word, layer_output, hidden_dim1, hidden_dim2, dropout, nhead, hid_size,
+    model = DeepEnzyme(n_fingerprint, dim, n_word, layer_output, hidden_dim1, hidden_dim2, dropout, nhead, hid_size,
                      layers_trans).to(device)
-    model.load_state_dict(torch.load('../../Result/example'),
+    model.load_state_dict(torch.load('../../../DeepEnzyme/example'),
                           strict=False)
     model.train(False)
 
