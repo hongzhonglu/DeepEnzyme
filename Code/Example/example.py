@@ -187,6 +187,7 @@ def main():
 
     model = DeepEnzyme(n_fingerprint, dim, n_word, layer_output, hidden_dim1, hidden_dim2, dropout, nhead, hid_size,
                      layers_trans).to(device)
+    #example can be downloaded from https://figshare.com/articles/dataset/DeepEnzyme/25771062
     model.load_state_dict(torch.load('../../../DeepEnzyme/example'),
                           strict=False)
     model.train(False)
