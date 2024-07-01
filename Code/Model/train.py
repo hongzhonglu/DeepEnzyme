@@ -167,7 +167,7 @@ def main():
     hid_size = 64
     layers_trans = 3
 
-    dir_input = '../DeepEnzyme/Data/input/'
+    dir_input = '../../../DeepEnzyme/Data/Input/'
     fingerprint = load_tensor(dir_input + 'fingerprint_0612', torch.LongTensor)
     smileadjacencies = load_tensor(dir_input + 'smileadjacencies_0612', torch.FloatTensor)
     sequences = load_tensor(dir_input + 'sequences_0612', torch.LongTensor)
@@ -190,8 +190,8 @@ def main():
     validater = Validater(model)
     tester = Tester(model)
 
-    file_MAEs = '../DeepEnzyme/Result/Output/dim64_lr001_E200_head4_drop3_seed666.txt'
-    file_model = '../DeepEnzyme/Result/Output/dim64_lr001_E200_head4_drop3_seed666'
+    file_MAEs = '../../../DeepEnzyme/Result/Output/dim64_lr001_E200_head4_drop3_seed666.txt'
+    file_model = '../../../DeepEnzyme/Result/Output/dim64_lr001_E200_head4_drop3_seed666'
     MAEs = 'Epoch\tTime(sec)\tLoss_train\tMAE_train\tRMSE_train\tR2_train\tloss_val\tMAE_val\tMAE_test' \
         '\tRMSE_val\tRMSE_test\tR2_val\tR2_test\tLr'
     with open(file_MAEs, 'w') as f:
