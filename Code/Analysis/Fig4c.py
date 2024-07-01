@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import stats
 
-df = pd.read_csv("../DeepEnzyme/Data/Fig/PafA.tsv", delimiter='\t')
-df2 = pd.read_csv("../DeepEnzyme/Data/Fig/science.abf8761_Data-S1.csv")
+df = pd.read_csv("../../../DeepEnzyme/Data/Fig/PafA.tsv", delimiter='\t')
+df2 = pd.read_csv("../../../DeepEnzyme/Data/Fig/science.abf8761_Data-S1.csv")
 
 for i in range(len(df2['variant'])):
     if df2['variant'][i] == 'WT':
@@ -35,5 +35,5 @@ plt.xticks(x, labels)
 plt.ylabel('Predicted $k$$_\mathregular{cat}$ Value', fontsize=12)
 
 plt.show()
-#plt.savefig("../../figure/Fig4c.pdf", dpi=600, bbox_inches='tight')
+#plt.savefig("../../../DeepEnzyme/Results/Figures/Fig4c.pdf", dpi=600, bbox_inches='tight')
 
