@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import stats
 
-df = pd.read_excel("../DeepEnzyme/Data/Fig/mmc3.xlsx")
+df = pd.read_excel("../../../DeepEnzyme/Data/Fig/mmc3.xlsx")
 
 nonsense = []
 missense = []
@@ -36,4 +36,4 @@ plt.xticks(x, labels)
 plt.ylabel('Experimental activity score', fontsize=12)
 
 plt.show()
-#plt.savefig("../../figure/Fig4b.pdf", dpi=600, bbox_inches='tight')
+#plt.savefig("../../../DeepEnzyme/Results/Figures/Fig4b.pdf", dpi=600, bbox_inches='tight')
