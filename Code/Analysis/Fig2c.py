@@ -4,12 +4,12 @@ import numpy as np
 from scipy.stats import pearsonr, gaussian_kde
 from sklearn.metrics import mean_squared_error
 
-df = pd.read_csv('../DeepEnzyme/Data/Fig/Fig2.csv')
+df = pd.read_csv('../../../DeepEnzyme/Data/Fig/Fig2.csv')
 predicted_logkcat = []
 experiment_logkcat = []
 
 for i in df.index:
-    if df['label'][i] == 1:
+    if df['label'][i] == 0:
         predicted_logkcat.append(df['Predicted logkcat'][i])
         experiment_logkcat.append(df['experiment logkcat'][i])
 
@@ -52,4 +52,4 @@ ax.spines['top'].set_linewidth(0.5)
 ax.spines['right'].set_linewidth(0.5)
 
 plt.show()
-# plt.savefig("../../figure/Fig2c.pdf", dpi=600, bbox_inches='tight')
+# plt.savefig("../../../DeepEnzyme/Results/Figures/Fig2c.pdf", dpi=600, bbox_inches='tight')
