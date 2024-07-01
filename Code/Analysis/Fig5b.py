@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import stats
 
-df = pd.read_csv("../DeepEnzyme/Data/Fig/PafA_att.csv")
+df = pd.read_csv("../../../DeepEnzyme/Data/Fig/PafA_att.csv")
 
 x = df['site'].values.tolist()
 y = df['binding/active_site'].values.tolist()
@@ -38,4 +38,4 @@ plt.tick_params(axis='both', labelsize=12)
 plt.tight_layout()
 
 plt.show()
-#plt.savefig("../../figure/Fig5b.pdf", dpi=600, bbox_inches='tight')
+#plt.savefig("../../../DeepEnzyme/Results/Figures/Fig5b.pdf", dpi=600, bbox_inches='tight')
