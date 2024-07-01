@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-df_iAF987 = pd.read_csv('../DeepEnzyme/Data/Fig/BiGG/iAF987.csv')
+df_iAF987 = pd.read_csv('../../../DeepEnzyme/Data/Fig/BiGG/iAF987.csv')
 
 data_iAF987 = []
 for j in df_iAF987.index:
@@ -14,5 +14,4 @@ plt.xlabel('Predicted $log$$_\mathregular{10}$($k$$_\mathregular{cat}$)')
 plt.ylabel('Frequency')
 
 plt.show()
-#plt.savefig("../../figure/Fig6b.pdf", dpi=600, bbox_inches='tight')
-
+#plt.savefig("../../../DeepEnzyme/Results/Figures/Fig6b.pdf", dpi=600, bbox_inches='tight')
