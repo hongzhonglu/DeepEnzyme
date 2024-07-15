@@ -14,6 +14,8 @@
 [(Back to top)](#table-of-contents)
 
 ```
+conda create -n DeepEnzyme python=3.9
+conda activate DeepEnzyme
 pip install -r requirements.txt
 ```
 
