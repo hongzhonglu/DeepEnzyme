@@ -4,7 +4,6 @@ einops==0.7.0
 h5py==3.7.0
 matplotlib==3.8.0
 numpy==1.22.4
-openfold==0.0.1
 pandas==2.2.2
 rdkit==2022.9.1
 rdkit_pypi==2022.9.5
