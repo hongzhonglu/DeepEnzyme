@@ -32,7 +32,7 @@ Code/Example/example.py
 
 [(Back to top)](#table-of-contents)
 
-- Please cite the paper "[DeepEnzyme: a robust deep learning model for improved enzyme turnover number prediction by utilizing features of protein 3D structures](https://www.biorxiv.org/content/10.1101/2023.12.09.570923v2)"
+- Please cite the paper "[DeepEnzyme: a robust deep learning model for improved enzyme turnover number prediction by utilizing features of protein 3D structures](https://academic.oup.com/bib/article/25/5/bbae409/7736248)"
 
 # Contributors
 
